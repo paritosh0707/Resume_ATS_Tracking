@@ -3,17 +3,14 @@
 # Specify the URL of the Poppler archive
 POPPLER_URL="https://poppler.freedesktop.org/poppler-21.12.0.tar.xz"
 
-# Specify the destination directory for the downloaded archive
-DESTINATION_DIR="/path/to/save/poppler/archive"
+# Download Poppler archive to current working directory
+curl -o "poppler.tar.xz" "$POPPLER_URL"
 
-# Download Poppler archive
-curl -o "$DESTINATION_DIR/poppler.tar.xz" "$POPPLER_URL"
-
-# Extract Poppler
-tar -xf "$DESTINATION_DIR/poppler.tar.xz" -C "$DESTINATION_DIR"
+# Extract Poppler to current working directory
+tar -xf "poppler.tar.xz"
 
 # Add Poppler bin directory to PATH
-export PATH="$PATH:$DESTINATION_DIR/poppler-21.12.0/bin"
+export PATH="$PATH:$(pwd)/poppler-21.12.0/bin"
 
 # Test installation
 pdftotext -v
