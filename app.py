@@ -8,17 +8,6 @@ import io
 from PIL import Image 
 import pdf2image
 import google.generativeai as genai
-import subprocess
-
-# Path to your Bash script
-bash_script_path = "./install_poppler.sh"
-
-# Execute the Bash script
-subprocess.run(["bash", bash_script_path], check=True)
-
-
-
-# os.environ['PATH'] = "/workspaces/Resume_ATS_Tracking/poppler-24.02.0/Library/bin"
 
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
