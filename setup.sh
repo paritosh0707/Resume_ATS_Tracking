@@ -1,13 +1,19 @@
 #!/bin/bash
 
-# Download Poppler
-wget -O "/tmp/poppler.7z" "https://blog.alivate.com.au/wp-content/uploads/2018/10/poppler-XX-win64.7z"
+# Specify the URL of the Poppler archive
+POPPLER_URL="https://poppler.freedesktop.org/poppler-21.12.0.tar.xz"
+
+# Specify the destination directory for the downloaded archive
+DESTINATION_DIR="/path/to/save/poppler/archive"
+
+# Download Poppler archive
+curl -o "$DESTINATION_DIR/poppler.tar.xz" "$POPPLER_URL"
 
 # Extract Poppler
-7z x "/tmp/poppler.7z" -o"C:\path\to\poppler"
+tar -xf "$DESTINATION_DIR/poppler.tar.xz" -C "$DESTINATION_DIR"
 
 # Add Poppler bin directory to PATH
-export PATH="$PATH:/c/path/to/poppler/bin"
+export PATH="$PATH:$DESTINATION_DIR/poppler-21.12.0/bin"
 
 # Test installation
 pdftotext -v
